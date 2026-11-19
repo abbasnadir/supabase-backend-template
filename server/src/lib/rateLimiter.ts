@@ -17,6 +17,12 @@ class RateLimiter {
     return rateLimit({
       // Deconstruct the parameters passed earlier, based on dynamic policy
       ...this.limits[policy],
+      // Answer with the same error shape as errorHandler
+      handler: (_req, res, _next, options) => {
+        res.status(options.statusCode).json({
+          error: { code: "RATE_LIMITED", message: "Too many requests, slow down" },
+        });
+      },
 
       /* Set the parameter on which rate-limiting will work.
       Defaults to `req.ip` if user is not defined. Used in combination
