@@ -16,9 +16,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Hangman v2",
-  description:
-    "A robust multiplayer hangman game with authentication and leaderboards",
+  title: "Supabase app",
+  description: "Next.js client for the Supabase backend template",
 };
 
 export default function RootLayout({
